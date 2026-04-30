@@ -1,28 +1,14 @@
-# JetBot
+# JetBot Orin Nano (Work in Progress)
 
-<!--[<img src="https://img.shields.io/discord/553852754058280961.svg">](https://discord.gg/Ady6NtF) -->
+The Jetbot [original repository](https://github.com/NVIDIA-AI-IOT/jetbot), produced by NVIDIA, is not compatible with Jetson Orin Nano. In the Spring and Summer of 2026, a group of Masters Students, guided by lecturer Diana Vallverdu, investigated how to set up the Orin Nano to update this repository accordingly.
 
-> Looking for a quick way to get started with JetBot?  Many third party kits are [now available](https://jetbot.org/master/third_party_kits.html)!
+This repository is currently a work in progress, with many of the original code still there, and as such **will not work out of the box**. We have not yet updated the dockers, i.e., we are working natively on the Jetson Orin Nano.
 
-<img src="../..//wiki/images/jetson-jetbot-illustration_1600x1260.png" height="256">
+## Prerequisites
 
-JetBot is an open-source robot based on NVIDIA Jetson Nano that is
+1. Ensure that you have purchased the [Bill of Materials](https://jetbot.org/master/bill_of_materials_orin.html) for Orin.
+2. Follow the [Hardware Setup Steps](https://jetbot.org/master/hardware_setup.html)
+3. Follow the [Initial Setup Guide](https://www.jetson-ai-lab.com/tutorials/initial-setup-jetson-orin-nano/) of the Jetson Nano Orin. OS used for this guide was the **Jetpack 6.2**.
+4. Clone this repository
 
-* **Affordable** - Less than $150 add-on to Jetson Nano
-* **Educational** - Tutorials from basic motion to AI based collision avoidance
-* **Fun!** - Interactively programmed from your web browser
-
-Building and using JetBot gives the hands on experience needed to create entirely new AI projects.
-
-To get started, read the [JetBot documentation](https://jetbot.org).
-
-## Get involved
-
-We really appreciate any feedback related to JetBot, and also just enjoy seeing what you're working on!  There is a growing community of Jetson Nano and JetBot users.  It's easy to get involved involved...
-
-<!--* Join the [chat server](https://discord.gg/Ady6NtF)-->
-* Ask a question and discuss JetBot related topics on the [JetBot GitHub Discussions](https://github.com/NVIDIA-AI-IOT/jetbot/discussions)
-* Report a bug by [creating an issue](https://github.com/NVIDIA-AI-IOT/jetbot/issues)
-* Share your project or ask a question on the [Jetson Developer Forums](https://devtalk.nvidia.com/default/board/139/jetson-embedded-systems/)
-
-
+## Environment
