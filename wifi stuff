@@ -1,0 +1,3 @@
+sudo nmcli device wifi connect "diana" password "hellohello" ifname wlxb01921b6b4e2
+ip addr show wlxb01921b6b4e2
+

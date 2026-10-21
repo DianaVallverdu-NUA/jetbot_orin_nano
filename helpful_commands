@@ -1,0 +1,34 @@
+Chromium:
+xhost +
+sudo chromium --no-sandbox
+
+Jupyter:
+cd jetbot
+source bin/activate
+jupyter lab --ip=0.0.0.0 --no-browser --allow-root
+
+
+#for installing correct Jetson.GPIO and blinka
+
+sudo apt-get install python3-jetson-gpio
+pip install adafruit-blinka adafruit-circuitpython-motorkit
+
+test i2c is detected:
+i2cdetect -y -r 7
+
+
+MOTOR
+https://github.com/adafruit/Adafruit_CircuitPython_MotorKit
+https://pypi.org/project/Jetson.GPIO/
+
+OPEN VIDEO
+gst-launch-1.0 nvarguscamerasrc sensor_id=0 ! 'video/x-raw(memory:NVMM),width=1280,height=720,framerate=30/1,format=NV12' ! nvvidconv flip-method=0 ! 'video/x-raw,width=960,height=540' ! nvvidconv ! nvegltransform ! nveglglessink -e
+
+
+
+gst-launch-1.0 nvarguscamerasrc sensor-id=0 ! 'video/x-raw(memory:NVMM),width=1280,height=720,framerate=30/1,format=NV12' ! nvvidconv flip-method=0 ! 'video/x-raw,width=960,height=540,format=BGRx' ! videoconvert ! 'video/x-raw,format=BGR' ! appsink max-buffers=1 drop=True
+
+
+setup motors
+pip3 install Jetson.GPIO
+export JETSON_MODEL_NAME=JETSON_ORIN_NANO
