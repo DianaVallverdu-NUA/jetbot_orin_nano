@@ -5,6 +5,7 @@ import threading
 import numpy as np
 from .camera_base import CameraBase
 
+# gst-launch-1.0 nvarguscamerasrc sensor_id=0 ! 'video/x-raw(memory:NVMM),width=1280,height=720,framerate=30/1,format=NV12' ! nvvidconv flip-method=0 ! 'video/x-raw,width=960,height=540' ! nvvidconv ! nvegltransform ! nveglglessink -e
 
 class OpenCvGstCamera(CameraBase):
     
@@ -47,9 +48,15 @@ class OpenCvGstCamera(CameraBase):
                 break
                 
     def _gst_str(self):
-        return 'nvarguscamerasrc sensor-mode=3 ! video/x-raw(memory:NVMM), width=%d, height=%d, format=(string)NV12, framerate=(fraction)%d/1 ! nvvidconv ! video/x-raw, width=(int)%d, height=(int)%d, format=(string)BGRx ! videoconvert ! appsink' % (
-                self.capture_width, self.capture_height, self.fps, self.width, self.height)
-    
+        return (
+            'nvarguscamerasrc sensor-id=0 ! '
+            'video/x-raw(memory:NVMM), width=%d, height=%d, format=(string)NV12, framerate=(fraction)%d/1 ! '
+            'nvvidconv ! '
+            'video/x-raw, width=(int)%d, height=(int)%d, format=(string)BGRx ! '
+            'videoconvert ! video/x-raw, format=(string)BGR ! '
+            'appsink drop=1 max-buffers=1'
+        ) % (self.capture_width, self.capture_height, self.fps, self.width, self.height)
+
     def start(self):
         if not self.cap.isOpened():
             self.cap.open(self._gst_str(), cv2.CAP_GSTREAMER)

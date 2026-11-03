@@ -32,3 +32,5 @@ gst-launch-1.0 nvarguscamerasrc sensor-id=0 ! 'video/x-raw(memory:NVMM),width=12
 setup motors
 pip3 install Jetson.GPIO
 export JETSON_MODEL_NAME=JETSON_ORIN_NANO
+
+Will have to install ipyevents with pip3 install --user ipyevents
