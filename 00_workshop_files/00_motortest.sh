@@ -1,0 +1,3 @@
+export JETSON_MODEL_NAME=JETSON_ORIN_NANO
+cd scripts
+python ./motortest.py
