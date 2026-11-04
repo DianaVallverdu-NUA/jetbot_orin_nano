@@ -36,10 +36,23 @@ from Adafruit_MotorHAT import Adafruit_MotorHAT
 import traitlets
 from traitlets.config.configurable import Configurable
 
+from smbus2 import SMBus
+
+bus = SMBus(7)
 
 
 # Scan for devices on I2C bus
-addresses = qwiic.scan()
+#addresses = qwiic.scan()
+
+addresses = []
+
+
+for addr in range(0x03, 0x78):
+    try :
+        bus.read_byte(addr)
+        addresses.append(addr)
+    except OSError:
+        pass
 
 class Motor(Configurable):
 

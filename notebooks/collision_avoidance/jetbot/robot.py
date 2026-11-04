@@ -40,24 +40,24 @@ class Robot():
         self.kit = MotorKit()
 
     def set_motors(self, left_speed, right_speed):
-        self.kit.motor1.throttle = -left_speed
+        self.kit.motor1.throttle = left_speed
         self.kit.motor2.throttle = right_speed
                 
     def forward(self, speed=1.0, duration=None):
-        self.kit.motor1.throttle = -speed
+        self.kit.motor1.throttle = speed
         self.kit.motor2.throttle = speed
 
     def backward(self, speed=1.0):
-        self.kit.motor1.throttle = speed
+        self.kit.motor1.throttle = -speed
         self.kit.motor2.throttle = -speed
 
     def left(self, speed=1.0):
         self.kit.motor1.throttle = -speed
-        self.kit.motor2.throttle = -speed
+        self.kit.motor2.throttle = speed
 
     def right(self, speed=1.0):
         self.kit.motor1.throttle = speed
-        self.kit.motor2.throttle = speed
+        self.kit.motor2.throttle = -speed
 
     def stop(self):
         self.kit.motor1.throttle = 0
